@@ -7,4 +7,5 @@ public interface IUserService
 {
     public Task<UserResponse.Create> Create(UserRequest.Create request);
     public Task<UserResponse.Login> Login(UserRequest.Login request);
+    public Task<UserResponse.Get> GetById(UserRequest.Get request);
 }

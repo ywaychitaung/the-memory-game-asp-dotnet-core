@@ -54,4 +54,13 @@ public class UserService : IUserService
             UserId = user.UserId
         };
     }
+    
+    public async Task<UserResponse.Get> GetById(UserRequest.Get request)
+    {
+        // Find the user by their ID
+        var user = await _userRepository.GetById(request.UserId);
+        
+        // Map the user to a response
+        return _mapper.Map<UserResponse.Get>(user);
+    }
 }
