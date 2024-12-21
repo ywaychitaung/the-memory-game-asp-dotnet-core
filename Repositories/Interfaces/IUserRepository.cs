@@ -10,4 +10,5 @@ public interface IUserRepository
     Task<User> GetByUsername(string username);
     Task<User> Update(UserRequest.Update request);
     Task<User> Delete(UserRequest.Delete request);
+    Task<User> PurchasePremium(UserRequest.PurchasePremium request);
 }

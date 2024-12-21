@@ -8,7 +8,6 @@ public class User
     public Guid UserId { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
-    public string? FullName { get; set; }
 
     public bool IsPaidUser { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -17,12 +16,11 @@ public class User
 
     public User() { }
     
-    public User(string username, string password, string fullName)
+    public User(string username, string password)
     {
         UserId = Guid.NewGuid();
         Username = username;
         Password = password;
-        FullName = fullName;
         IsPaidUser = false;
         CreatedAt = DateTime.Now;
     }

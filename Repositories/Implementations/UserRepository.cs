@@ -62,8 +62,51 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public Task<User> Update(UserRequest.Update request)
+    public async Task<User> Update(UserRequest.Update request)
     {
-        throw new NotImplementedException();
+        // Find the user by their ID
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.UserId == request.UserId);
+    
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"User with ID {request.UserId} not found");
+        }
+    
+        // Update the user properties
+        user.IsPaidUser = request.IsPaidUser;
+    
+        // Mark the entity as modified
+        _context.Users.Update(user);
+    
+        // Save the changes
+        await _context.SaveChangesAsync();
+    
+        // Return the updated user
+        return user;
+    }
+    
+    public async Task<User> PurchasePremium(UserRequest.PurchasePremium request)
+    {
+        // Find the user by their ID
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.UserId == request.UserId);
+    
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"User with ID {request.UserId} not found");
+        }
+    
+        // Update the user properties
+        user.IsPaidUser = true;
+    
+        // Mark the entity as modified
+        _context.Users.Update(user);
+    
+        // Save the changes
+        await _context.SaveChangesAsync();
+    
+        // Return the updated user
+        return user;   
     }
 }

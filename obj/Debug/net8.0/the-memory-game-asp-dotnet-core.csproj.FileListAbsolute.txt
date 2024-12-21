@@ -128,3 +128,4 @@
 /Users/ywaychitaung/Desktop/Projects/Yway Chit Aung/The Memory Game/the-memory-game-asp-dotnet-core/obj/Debug/net8.0/the-memory-game-asp-dotnet-core.pdb
 /Users/ywaychitaung/Desktop/Projects/Yway Chit Aung/The Memory Game/the-memory-game-asp-dotnet-core/obj/Debug/net8.0/the-memory-game-asp-dotnet-core.genruntimeconfig.cache
 /Users/ywaychitaung/Desktop/Projects/Yway Chit Aung/The Memory Game/the-memory-game-asp-dotnet-core/obj/Debug/net8.0/ref/the-memory-game-asp-dotnet-core.dll
+/Users/ywaychitaung/Desktop/Projects/Yway Chit Aung/The Memory Game/the-memory-game-asp-dotnet-core/obj/Debug/net8.0/the-memory-game-asp-dotnet-core.sourcelink.json

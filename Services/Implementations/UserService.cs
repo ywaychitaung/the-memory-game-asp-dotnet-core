@@ -21,6 +21,9 @@ public class UserService : IUserService
     
     public async Task<UserResponse.Create> Create(UserRequest.Create request)
     {
+        // Hash the password
+        request.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
+        
         // Map the request to a User entity
         var user = _mapper.Map<User>(request);
         
@@ -30,7 +33,8 @@ public class UserService : IUserService
         // Return the session ID
         return new UserResponse.Create
         {
-            UserId = user.UserId
+            UserId = user.UserId,
+            Username = user.Username
         };
     }
     
@@ -54,7 +58,8 @@ public class UserService : IUserService
         // Return the session ID
         return new UserResponse.Login
         {
-            UserId = user.UserId
+            UserId = user.UserId,
+            Username = user.Username
         };
     }
     
@@ -65,5 +70,28 @@ public class UserService : IUserService
         
         // Map the user to a response
         return _mapper.Map<UserResponse.Get>(user);
+    }
+    
+    public async Task<UserResponse.Get> Update(UserRequest.Update request)
+    {
+        // Update user and get the result directly from repository
+        var updatedUser = await _userRepository.Update(request);
+    
+        // Map and return the updated user
+        return _mapper.Map<UserResponse.Get>(updatedUser);
+    }
+    
+    public async Task<UserResponse.PurchasePremium> PurchasePremium(UserRequest.PurchasePremium request)
+    {
+        // Update premium status and get updated user
+        var updatedUser = await _userRepository.PurchasePremium(request);
+    
+        // Map and return the response
+        return new UserResponse.PurchasePremium
+        {
+            UserId = updatedUser.UserId,
+            Username = updatedUser.Username,
+            IsPaidUser = updatedUser.IsPaidUser
+        };
     }
 }

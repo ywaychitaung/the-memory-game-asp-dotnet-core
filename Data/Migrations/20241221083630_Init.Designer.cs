@@ -11,7 +11,7 @@ using the_memory_game_asp_dotnet_core.Data.Databases;
 namespace the_memory_game_asp_dotnet_core.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241221053349_Init")]
+    [Migration("20241221083630_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -45,6 +45,8 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
 
                     b.HasKey("ScoreId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Scores");
                 });
 
@@ -59,9 +61,6 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsPaidUser")
                         .HasColumnType("tinyint(1)");
@@ -80,6 +79,17 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("the_memory_game_asp_dotnet_core.Models.Entities.Score", b =>
+                {
+                    b.HasOne("the_memory_game_asp_dotnet_core.Models.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

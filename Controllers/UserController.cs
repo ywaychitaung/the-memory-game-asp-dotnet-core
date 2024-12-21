@@ -24,4 +24,13 @@ public class UserController : ControllerBase
         
         return Ok(response);
     }
+    
+    [HttpPost("{UserId:guid}/premium")]
+    public async Task<IActionResult> PurchasePremium([FromRoute] UserRequest.PurchasePremium request)
+    {
+        // Update the user's premium status
+        var response = await _userService.PurchasePremium(request);
+        
+        return Ok(response);
+    }
 }
