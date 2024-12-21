@@ -14,10 +14,7 @@ public class ScoreResponse
     
     public class Get
     {
-        public Guid ScoreId { get; set; }
-        public Guid UserId { get; set; }
-        public int TotalMoves { get; set; }
-        public int TotalSeconds { get; set; }
+        public string Username { get; set; }
         public int Points { get; set; }
         public DateTime CreatedAt { get; set; }
     }

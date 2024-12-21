@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("the-memory-game-asp-dotnet-core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c090f221f0ab87c19e90c469873a503aa620603")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a409e2650d7ec3e920e56bf10f29ca7552f821f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("the-memory-game-asp-dotnet-core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("the-memory-game-asp-dotnet-core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

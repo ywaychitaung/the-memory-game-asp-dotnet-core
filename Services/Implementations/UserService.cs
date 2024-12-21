@@ -21,9 +21,6 @@ public class UserService : IUserService
     
     public async Task<UserResponse.Create> Create(UserRequest.Create request)
     {
-        // Hash the password
-        request.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
-        
         // Map the request to a User entity
         var user = _mapper.Map<User>(request);
         
@@ -42,7 +39,13 @@ public class UserService : IUserService
         // Find the user by their username
         var user = await _userRepository.GetByUsername(request.Username);
         
-        // Hash the password and compare it to the stored password
+        // Add null check here
+        if (user == null)
+        {
+            throw new UnauthorizedAccessException("Invalid credentials");
+        }
+        
+        // Compare it to the stored password
         if (!BCrypt.Net.BCrypt.Verify(request.Password, user.Password))
         {
             throw new UnauthorizedAccessException("Invalid credentials");

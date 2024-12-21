@@ -20,6 +20,7 @@ public class ScoreMappingProfile : Profile
         CreateMap<Score, ScoreResponse.Create>();
 
         // Map from Score entity to ScoreResponse.Get
-        CreateMap<Score, ScoreResponse.Get>();
+        CreateMap<Score, ScoreResponse.Get>()
+            .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username));
     }
 }

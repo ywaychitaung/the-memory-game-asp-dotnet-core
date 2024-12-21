@@ -17,6 +17,9 @@ public class Score
     
     public DateTime CreatedAt { get; set; }
     
+    // Navigation property
+    public User User { get; set; }
+    
     public Score() { }
     
     public Score(Guid userId, int totalMoves, int totalSeconds, int points)

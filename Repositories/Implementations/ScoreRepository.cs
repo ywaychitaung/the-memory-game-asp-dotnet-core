@@ -1,3 +1,5 @@
+using the_memory_game_asp_dotnet_core.Constants;
+
 namespace the_memory_game_asp_dotnet_core.Repositories.Implementations;
 
 using Microsoft.EntityFrameworkCore;
@@ -29,9 +31,12 @@ public class ScoreRepository : IScoreRepository
 
     public async Task<List<Score>> Get()
     {
-        // Get all scores ordered by points in descending order (highest first)
+        // Get top N scores ordered by points in descending order
         return await _context.Scores
             .OrderByDescending(s => s.Points)
+            .Take(ScoreConstants.MAX_LEADERBOARD_LIMIT)
+            .Include(s => s.User)
             .ToListAsync();
+
     }
 }
