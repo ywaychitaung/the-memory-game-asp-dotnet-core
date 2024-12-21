@@ -13,8 +13,7 @@ public class UserMappingProfile : Profile
         // Map Create Request to User
         CreateMap<UserRequest.Create, User>()
             .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username))
-            .ForMember(dest => dest.Password, opt => opt.MapFrom(src => BCrypt.Net.BCrypt.HashPassword(src.Password)))
-            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName));
+            .ForMember(dest => dest.Password, opt => opt.MapFrom(src => BCrypt.Net.BCrypt.HashPassword(src.Password)));
         
         // Add new mapping for Get response
         CreateMap<User, UserResponse.Get>();

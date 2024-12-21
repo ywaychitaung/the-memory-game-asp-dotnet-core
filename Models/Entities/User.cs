@@ -8,7 +8,7 @@ public class User
     public Guid UserId { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
-    public string FullName { get; set; }
+    public string? FullName { get; set; }
 
     public bool IsPaidUser { get; set; }
     public DateTime CreatedAt { get; set; }

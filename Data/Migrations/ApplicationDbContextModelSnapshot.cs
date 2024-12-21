@@ -19,6 +19,32 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
                 .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("the_memory_game_asp_dotnet_core.Models.Entities.Score", b =>
+                {
+                    b.Property<Guid>("ScoreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalMoves")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalSeconds")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("ScoreId");
+
+                    b.ToTable("Scores");
+                });
+
             modelBuilder.Entity("the_memory_game_asp_dotnet_core.Models.Entities.User", b =>
                 {
                     b.Property<Guid>("UserId")
@@ -32,7 +58,6 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsPaidUser")

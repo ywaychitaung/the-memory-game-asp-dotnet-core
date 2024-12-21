@@ -23,7 +23,16 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.CustomSchemaIds(type => {
+        if (type.IsNested)
+        {
+            return $"{type.DeclaringType.Name}_{type.Name}";
+        }
+        return type.Name;
+    });
+});
 
 // Add Database Context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -32,6 +41,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Dependency Injection of Repositories and Services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IScoreRepository, ScoreRepository>();
+builder.Services.AddScoped<IScoreService, ScoreService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
