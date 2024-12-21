@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/the-memory-game-asp-dotnet-core.props" />
-</Project>
