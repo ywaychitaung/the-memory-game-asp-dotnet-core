@@ -34,7 +34,11 @@ public class ScoreService : IScoreService
         // Return the score ID
         return new ScoreResponse.Create
         {
-            ScoreId = score.ScoreId
+            ScoreId = score.ScoreId,
+            Points = score.Points,
+            TotalSeconds = score.TotalSeconds,
+            TotalMoves = score.TotalMoves,
+            CreatedAt = score.CreatedAt
         };
     }
     

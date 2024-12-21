@@ -34,7 +34,8 @@ public class UserService : IUserService
         return new UserResponse.Create
         {
             UserId = user.UserId,
-            Username = user.Username
+            Username = user.Username,
+            IsPaidUser = user.IsPaidUser
         };
     }
     
@@ -59,7 +60,8 @@ public class UserService : IUserService
         return new UserResponse.Login
         {
             UserId = user.UserId,
-            Username = user.Username
+            Username = user.Username,
+            IsPaidUser = user.IsPaidUser
         };
     }
     

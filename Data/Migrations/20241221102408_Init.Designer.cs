@@ -11,7 +11,7 @@ using the_memory_game_asp_dotnet_core.Data.Databases;
 namespace the_memory_game_asp_dotnet_core.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241221083630_Init")]
+    [Migration("20241221102408_Init")]
     partial class Init
     {
         /// <inheritdoc />

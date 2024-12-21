@@ -16,6 +16,8 @@ public class ScoreResponse
     {
         public string Username { get; set; }
         public int Points { get; set; }
+        public int TotalMoves { get; set; }
+        public int TotalSeconds { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }
