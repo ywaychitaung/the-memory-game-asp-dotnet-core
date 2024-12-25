@@ -13,8 +13,7 @@ public class ScoreMappingProfile : Profile
         // Map from ScoreRequest.Create to Score entity
         CreateMap<ScoreRequest.Create, Score>()
             .ForMember(dest => dest.ScoreId, opt => opt.MapFrom(src => Guid.NewGuid()))
-            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.Now))
-            .ForMember(dest => dest.Points, opt => opt.Ignore());
+            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.Now));
 
         // Map from Score entity to ScoreResponse.Create
         CreateMap<Score, ScoreResponse.Create>();

@@ -28,9 +28,6 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
-
                     b.Property<int>("TotalMoves")
                         .HasColumnType("int");
 

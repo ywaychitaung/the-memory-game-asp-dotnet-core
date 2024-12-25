@@ -33,7 +33,7 @@ public class ScoreRepository : IScoreRepository
     {
         // Get top N scores ordered by points in descending order
         return await _context.Scores
-            .OrderByDescending(s => s.Points)
+            .OrderBy(s => s.TotalSeconds)
             .Take(ScoreConstants.MAX_LEADERBOARD_LIMIT)
             .Include(s => s.User)
             .ToListAsync();

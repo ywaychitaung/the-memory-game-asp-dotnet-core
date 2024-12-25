@@ -11,7 +11,7 @@ using the_memory_game_asp_dotnet_core.Data.Databases;
 namespace the_memory_game_asp_dotnet_core.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241221102408_Init")]
+    [Migration("20241225174733_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -30,9 +30,6 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
 
                     b.Property<int>("TotalMoves")
                         .HasColumnType("int");

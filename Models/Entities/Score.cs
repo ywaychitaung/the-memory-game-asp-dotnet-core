@@ -12,9 +12,6 @@ public class Score
     public int TotalMoves { get; set; }
     public int TotalSeconds { get; set; }
     
-    // Calculated points based on moves and time
-    public int Points { get; set; }
-    
     public DateTime CreatedAt { get; set; }
     
     // Navigation property
@@ -22,13 +19,12 @@ public class Score
     
     public Score() { }
     
-    public Score(Guid userId, int totalMoves, int totalSeconds, int points)
+    public Score(Guid userId, int totalMoves, int totalSeconds)
     {
         ScoreId = Guid.NewGuid();
         UserId = userId;
         TotalMoves = totalMoves;
         TotalSeconds = totalSeconds;
-        Points = points;
         CreatedAt = DateTime.Now;
     }
 }

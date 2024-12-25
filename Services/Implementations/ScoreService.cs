@@ -1,5 +1,3 @@
-using the_memory_game_asp_dotnet_core.Constants;
-
 namespace the_memory_game_asp_dotnet_core.Services.Implementations;
 
 using AutoMapper;
@@ -25,9 +23,6 @@ public class ScoreService : IScoreService
         // Map the request to a Score entity
         var score = _mapper.Map<Score>(request);
         
-        // Calculate points based on completion time
-        score.Points = CalculatePoints(score.TotalSeconds, score.TotalMoves);
-        
         // Create the score
         score = await _scoreRepository.Create(score);
         
@@ -35,7 +30,6 @@ public class ScoreService : IScoreService
         return new ScoreResponse.Create
         {
             ScoreId = score.ScoreId,
-            Points = score.Points,
             TotalSeconds = score.TotalSeconds,
             TotalMoves = score.TotalMoves,
             CreatedAt = score.CreatedAt
@@ -49,20 +43,5 @@ public class ScoreService : IScoreService
         
         // Map the score to a response
         return _mapper.Map<List<ScoreResponse.Get>>(score);
-    }
-
-    private int CalculatePoints(int totalSeconds, int totalMoves)
-    {
-        // Start with base score
-        int score = ScoreConstants.BASE_SCORE;
-        
-        // Subtract penalties for time
-        score -= totalSeconds * ScoreConstants.TIME_PENALTY_PER_SECOND;
-        
-        // Subtract penalties for moves
-        score -= totalMoves * ScoreConstants.MOVE_PENALTY;
-        
-        // Ensure score doesn't go below 0
-        return Math.Max(0, score);
     }
 }

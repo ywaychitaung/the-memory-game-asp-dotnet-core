@@ -40,7 +40,6 @@ namespace the_memory_game_asp_dotnet_core.Data.Migrations
                     UserId = table.Column<Guid>(type: "char(36)", nullable: false),
                     TotalMoves = table.Column<int>(type: "int", nullable: false),
                     TotalSeconds = table.Column<int>(type: "int", nullable: false),
-                    Points = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
