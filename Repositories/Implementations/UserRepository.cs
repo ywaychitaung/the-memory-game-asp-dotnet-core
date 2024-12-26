@@ -52,7 +52,7 @@ public class UserRepository : IUserRepository
     {
         // Find the user by their username
         var user = await _context.Users
-            .FirstOrDefaultAsync(u => u.Username == username);
+            .FirstOrDefaultAsync(u => EF.Functions.Collate(u.Username, "utf8mb4_bin") == username);
         
         if (user == null)
         {
